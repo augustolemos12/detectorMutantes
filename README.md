@@ -1,5 +1,5 @@
 # Detector de Mutantes 📡
-![image](https://github.com/user-attachments/assets/684b1d11-40ed-42c8-af9b-1ae4d39272c3)
+![image](https://github.com/user-attachments/assets/ed4427e2-dd2e-49c7-809f-6cf3d5eb7d51)
 
 
 ## Acerca del repositorio
@@ -21,13 +21,13 @@ Sabrás si un humano es mutante, si encuentras más de una secuencia de cuatro l
 
 ## Instrucciones de cómo utilizar la API y características
 La API utiliza la base de datos H2. 
-Está hosteada en el cloud computing libre Render: https://mutantesxmen.onrender.com .
+Está hosteada en el cloud computing libre Render: https://detectormutantes.onrender.com .
 Podremos interactuar con la misma mediante un cliente como Postman. Veamos un ejemplo.
 
 ### Método POST (nivel 2)
 En Postman se crea una request o solicitud de tipo POST y se coloca en el cuerpo de la misma, en formato JSON, la información que se quiere enviar. En nuestro caso enviaremos, para una persona, su nombre, apellido, edad y secuencias de ADN. Este método POST accede al endpoint "/mutant" por lo que la solictud se verá de esta forma:
 
-                                        https://mutantesxmen.onrender.com/mutant
+                                        https://detectormutantes.onrender.com/mutant
 y el cuerpo de la misma así:
 ```
 {
@@ -70,19 +70,20 @@ Llegado el caso en el que la matriz no cumpla con los ítems anteriores obtendre
                                     `{"error":"Error, por favor intente más tarde"}`.
 El error específico está programado para mostrarse por la "consola".
 
+**Nota: en este repositorio hay un archivo llamado datosEjemplos.txt que contiene ejemplos listos para ser utilizados en un POST.**
 ### Método GET STATS (nivel 3)
 En Postman se crea un request o solicitud de tipo GET. La misma accede al endopoint "/stats" y está destinada a brindar información acerca de cuántos humanos y mutantes hay, y el ratio entre estos. La solictud se ve así:
-                                    `https://mutantesxmen.onrender.com/stats`
+                                    `https://detectormutantes.onrender.com/stats`
 y su respuesta, en este caso, es:
                                 `{count_mutant_dna:7, count_human_dna:3, ratio:2.0}`
 
 ### Otros métodos
 Se implementaron también otros métodos. A todos ellos se accede con "/mutant"
-- GET ALL, para obtener todas las personas en la base de datos ya sean mutantes o no: `https://mutantesxmen.onrender.com/mutant`
-- GET ONE, para obtener una persona específica: `https://mutantesxmen.onrender.com/mutant/2`
-- GET DTO, para obtener información reducida acerca de un mutante. A diferencia de los dos anteriores, este solo muestra el nombre, apellido y si es mutante o no: `https://mutantesxmen.onrender.com/mutant/DTO/2`
-- DELETE, para eliminar a una persona específica: `https://mutantesxmen.onrender.com/mutant/3`
-- UPDATE, para actualizar a una persona específica. `https://mutantesxmen.onrender.com/mutant/1`
+- GET ALL, para obtener todas las personas en la base de datos ya sean mutantes o no: `https://detectormutantes.onrender.com/mutant`
+- GET ONE, para obtener una persona específica: `https://detectormutantes.onrender.com/mutant/2`
+- GET DTO, para obtener información reducida acerca de un mutante. A diferencia de los dos anteriores, este solo muestra el nombre, apellido y si es mutante o no: `https://detectormutantes.onrender.com/mutant/DTO/2`
+- DELETE, para eliminar a una persona específica: `https://detectormutantes.onrender.com/mutant/3`
+- UPDATE, para actualizar a una persona específica. `https://detectormutantes.onrender.com/mutant/1`
 
 ## Tests Unitarios
 Se realizaron tests para los métodos `isMutant()` en la clase `PersonaTest` y `verificarADN()` en la clase `MatrizTest`.
@@ -93,3 +94,6 @@ Por otro lado, los tests en `MatrizTest` buscan ingresar todas secuencias de ADN
 Se realizaron con JMeter. Se simuló hasta 1110 usuarios consultando a la vez:
 - Rendimiento 6.7/sec
 - %Error 0,009%
+
+## Diagrama de Secuencia
+En el repositorio se encuentra el diagrama de secuencia (en un pdf) correspondiente a `isMutant()`. 
